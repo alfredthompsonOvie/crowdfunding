@@ -1,12 +1,12 @@
 <template>
   <section class="bg"></section>
-  <AppNavigation />
+  <TheNavigation />
 
   <router-view></router-view>
 </template>
 
 <script setup>
-import AppNavigation from "@/components/AppNavigation.vue"
+import TheNavigation from "@/components/TheNavigation.vue"
 </script>
 
 <style lang="scss" scoped>

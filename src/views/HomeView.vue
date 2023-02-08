@@ -14,7 +14,9 @@
 				<div class="ctaWrapper">
 					<button 
           type="button" 
-          class="btn cta cta--project js-project">
+          class="btn cta cta--project js-project"
+					@click.prevent="modalStore.toggleBackProject"
+					>
 						Back this project
 					</button>
 					<button 
@@ -39,13 +41,19 @@
 			<!-- 5 -->
 		</div>
 	</main>
-	<ThePledges />
+	<ThePledges  v-if="modalStore.showBackProject"/>
+	<TheFeedback v-if="modalStore.showFeedback"/>
 </template>
 
 <script setup>
 import FundsStats from '../components/FundsStats.vue';
 import ProjectDetails from '../components/ProjectDetails.vue';
 import ThePledges from '../components/modal/ThePledges.vue';
+import TheFeedback from '../components/modal/TheFeedback.vue';
+
+import { useModalStore } from '@/stores/modal';
+
+const modalStore = useModalStore()
 </script>
 
 <style lang="scss" scoped>

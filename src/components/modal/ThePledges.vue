@@ -1,11 +1,15 @@
 <template>
-	<section class="overlay">
+	<section class="overlay modal">
 		<div class="card support">
 			<header class="card__header card__header--pledge-heading">
 				<div class="title">
 					<h2 class="subHeading">Back this project</h2>
 				</div>
-				<button class="btn closeModalBtn">
+				<button
+					type="button"
+					class="btn closeModalBtn"
+					@click.prevent="modalStore.toggleBackProject"
+				>
 					<img
 						src="@/assets/images/icon-close-modal.svg"
 						alt="close the modal"
@@ -18,7 +22,7 @@
 			</p>
 
 			<div class="pledge__category">
-				<div class="pledge__card">
+				<!-- <div class="pledge__card" @click.prevent="">
 					<div class="pledge__card--content">
 						<div class="checkbtn">
 							<button class="btn selectBtn">
@@ -36,9 +40,9 @@
 							updates via email.
 						</p>
 					</div>
-				</div>
+				</div> -->
 				<!--  -->
-				<div class="pledge__card">
+				<!-- <div class="pledge__card" @click.prevent="">
 					<div class="pledge__card--content">
 						<div class="checkbtn">
 							<button class="btn selectBtn">
@@ -63,8 +67,8 @@
 							</div>
 						</div>
 					</div>
-					<!-- Selected pledge start -->
-					<form action="#" class="pledge__form">
+					
+					<form class="pledge__form" v-if="modalStore.showForm">
 						<p class="text">Enter your pledge</p>
 						<div class="form__group">
 							<label for="amount">
@@ -80,15 +84,18 @@
 							<input type="submit" value="Continue" class="form__control cta" />
 						</div>
 					</form>
-					<!-- Selected pledge end -->
-				</div>
+					
+				</div> -->
 				<!--  -->
-				<div class="pledge__card">
+				<!-- <div class="pledge__card" @click.prevent="">
 					<div class="pledge__card--content">
 						<div class="checkbtn">
 							<button class="btn selectBtn">
 								<span class="span"></span>
 							</button>
+
+							<label for="radio"></label>
+							<input type="radio" name="radio" id="radio">
 						</div>
 						<header class="card__header card__header--pledge-subHeading">
 							<div class="title">
@@ -108,8 +115,8 @@
 							</div>
 						</div>
 					</div>
-					<!-- Selected pledge start -->
-					<form action="#" class="pledge__form">
+					
+					<form class="pledge__form" v-if="modalStore.showForm">
 						<p class="text">Enter your pledge</p>
 						<div class="form__group">
 							<label for="amount">
@@ -125,10 +132,10 @@
 							<input type="submit" value="Continue" class="form__control cta" />
 						</div>
 					</form>
-					<!-- Selected pledge end -->
-				</div>
+					
+				</div> -->
 				<!--  -->
-				<div class="pledge__card">
+				<!-- <div class="pledge__card" @click.prevent="">
 					<div class="pledge__card--content">
 						<div class="checkbtn">
 							<button class="btn selectBtn">
@@ -155,8 +162,8 @@
 							</div>
 						</div>
 					</div>
-					<!-- Selected pledge start -->
-					<form action="#" class="pledge__form">
+					
+					<form class="pledge__form" v-if="modalStore.showForm">
 						<p class="text">Enter your pledge</p>
 						<div class="form__group">
 							<label for="amount">
@@ -172,14 +179,103 @@
 							<input type="submit" value="Continue" class="form__control cta" />
 						</div>
 					</form>
-					<!-- Selected pledge end -->
-				</div>
+					
+				</div> -->
 				<!--  -->
+
+				<!--  -->
+				<PledgeCard
+					v-for="(pledge, i) in pledges"
+					:key="pledge.title"
+					:pledge="pledge"
+					:index="i"
+					@toggleForm="toggleForm"
+				/>
 			</div>
 		</div>
 	</section>
+	<section class="overlay--bg"></section>
 </template>
 
-<script setup></script>
+<script setup>
+import { useModalStore } from "@/stores/modal";
+import { ref } from "vue";
+import PledgeCard from "./PledgeCard.vue";
 
-<style lang="scss" scoped></style>
+const modalStore = useModalStore();
+
+const pledges = ref([
+	{
+		title: "Pledge with no reward",
+		pledgeInfo: "",
+		details:
+			"Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.",
+		pledgeRemaining: "",
+		open: false,
+	},
+	{
+		title: "Bamboo Stand",
+		pledgeInfo: "Pledge $25 or more",
+		details:
+			"You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.",
+		pledgeRemaining: 101,
+		placeholder: 25,
+		open: false,
+	},
+	{
+		title: "Black Edition Stand",
+		pledgeInfo: "Pledge $75 or more",
+		details:
+			"You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included.",
+		pledgeRemaining: 64,
+		placeholder: 75,
+		open: false,
+	},
+	{
+		title: "Mahogany Special Edition",
+		pledgeInfo: "Pledge $200 or more",
+		details:
+			"You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added to our Backer member list. Shipping is included.",
+		pledgeRemaining: 0,
+		placeholder: 200,
+		open: false,
+	},
+]);
+
+const toggleForm = (index) => {
+	console.log(index);
+	pledges.value = pledges.value.map((pledge, i) => {
+		if (i === index) {
+			pledge.open = !pledge.open;
+		} else {
+			pledge.open = false;
+		}
+		return pledge;
+	});
+};
+</script>
+
+<style lang="scss" scoped>
+input[type="checkbox"] {
+	/* background-color: initial; */
+	cursor: pointer;
+	appearance: initial;
+	/* box-sizing: border-box; */
+	margin: 3px 3px 3px 4px;
+	padding: initial;
+	width: 1.2em;
+	height: 1.2em;
+	border: 1px solid var(--DarkCyan);
+
+	border-radius: 50%;
+}
+input[type="checkbox"]:checked {
+	background-color: var(--DarkCyan);
+}
+span.checked {
+	background-color: var(--DarkCyan);
+	width: 1em;
+	height: 1em;
+	border-radius: 50%;
+}
+</style>

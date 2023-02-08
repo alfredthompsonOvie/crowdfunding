@@ -85,26 +85,26 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+// import { ref } from 'vue';
 
 
-const pledges = ref([
-  {
-    title: 'Bamboo Stand Pledge $25 or more',
-    description: '',
-    pledgeLeft: 'left'
-  },
-  {
-    title: '',
-    description: '',
-    pledgeLeft: 'left'
-  },
-  {
-    title: '',
-    description: '',
-    pledgeLeft: 'left'
-  },
-])
+// const pledges = ref([
+//   {
+//     title: 'Bamboo Stand Pledge $25 or more',
+//     description: '',
+//     pledgeLeft: 'left'
+//   },
+//   {
+//     title: '',
+//     description: '',
+//     pledgeLeft: 'left'
+//   },
+//   {
+//     title: '',
+//     description: '',
+//     pledgeLeft: 'left'
+//   },
+// ])
 </script>
 
 <style lang="scss" scoped></style>

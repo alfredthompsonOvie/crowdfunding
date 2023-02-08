@@ -191,7 +191,7 @@
 	margin-top: 1em;
 	box-shadow: 0px 0px 1.2px var(--DarkGray);
 }
-.subHeading-pledge {
+.subHeading--pledge {
 	color: var(--ModerateCyan);
 	margin-top: 0.5em;
 }
@@ -220,52 +220,53 @@
 	cursor: not-allowed;
 }
 
-
-.overlay {
-  position: fixed;
-  top: -7em;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1em;
-  padding: 1em;
+.overlay--bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, .5);
+	z-index: 90;
 }
-.modalContainer{
-  position: absolute;
-  top: -7em;
-  left: 0;
-  right: 0;
-  /* // position: relative; */
-  /* // display: none; */
-  /* @media(min-width: 545px){
-  top: -10em;
-  } */
+
+.modal {
+	position: absolute;
+	top: 0em;
+	left: 0;
+	right: 0;
+	padding: 5em 0; 
+	display: grid;
+	grid-template-columns: 1fr 10fr 1fr;
+	align-items: center;
+	justify-content: center;
+	z-index: 99;
 }
 .modal--success{
+	grid-column: 2;
   max-width: 400px;
-  width: 100%;
-  /* // clip-path to hide it */
+  /* width: 100%; */
+	margin-inline: auto;
+	position: relative;
   /* display: none; */
 }
 .modal--success img ~ * {
   margin-top: 1.3em;
 }
 .support {
+	grid-column: 2;
+	/* display: none; */
   text-align: left;
-  /* // max-width: 680px; */
   z-index: 6;
+  /* // max-width: 680px; */
 
   /* // clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%); */
-  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  /* clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); */
 
-  position: absolute;
+  /* position: absolute;
   top: 0;
   left: 0;
-  right: 0;
+  right: 0; */
 }
 .pledge__category .card:nth-child(1) {
   margin-top: 1.5em;
@@ -282,6 +283,13 @@
   max-width: 580px;
   margin-inline: auto;
   position: relative;
+	cursor: pointer;
+}
+.pledge__card:hover .subHeading--title {
+	color: var(--ModerateCyan);
+}
+.pledge__card.outOfSock:hover .subHeading--title {
+	color: initial;
 }
 .pledge__card--selected{
   border: 2px solid var(--ModerateCyan);
@@ -399,7 +407,7 @@ label {
 		margin-top: 1.5em;
 	}
 
-	.subHeading-pledge {
+	.subHeading--pledge {
 		margin-top: 0;
 	}
 	.title {
@@ -446,7 +454,7 @@ label {
     grid-row: 2/-1;
     margin: .1em 0 0;
   }
-  .overlay {
-    top: -10em;
-  }
+	.pledge__card .card__footer {
+		margin: 0;
+	}
 }

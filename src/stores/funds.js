@@ -28,6 +28,11 @@ export const useFundsStore = defineStore('funds', () => {
     return result
   })
 
+  const addToFunds = (funds) => {
+    balance.value += funds,
+    backers.value++
+  }
+
   return {
     showBalance,
     showBackers,
@@ -35,6 +40,7 @@ export const useFundsStore = defineStore('funds', () => {
     showBambooStandPledge,
     showBlackEditionStandPledge,
     showmahoganySpecialEditionPledge,
-    calProgressBar
+    calProgressBar,
+    addToFunds
   }
 })

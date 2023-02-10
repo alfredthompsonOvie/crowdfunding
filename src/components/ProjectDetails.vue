@@ -111,7 +111,7 @@
 					type="button"
 					class="btn cta" 
 					:disabled="pledge.pledgeCount === 0"
-					@click.prevent="handleClick"
+					@click.prevent="handleClick(pledge.title)"
 					v-else
 					>Select Reward
 				</button>
@@ -128,8 +128,6 @@ import { useModalStore } from "@/stores/modal"
 
 const store = usePledgesStore();
 const modalStore =  useModalStore()
-
-
 
 const pledges = ref([
 	{
@@ -155,13 +153,18 @@ const pledges = ref([
 	},
 ]);
 
-const handleClick = () => {
+const handleClick = (anchor) => {
+	// pledges.value = pledges.value.map((pledge) => {
+	// 	if (pledge.title === anchor) {
+	// 		pledge.open = !pledge.open;
+	// 	} else {
+	// 		pledge.open = false;
+	// 	}
+	// 	return pledge;
+	// });
+	anchor = anchor.split(' ').join('')
+	store.updatePledgeId(anchor);
 	modalStore.toggleBackProject()
-	window.scrollTo({
-		top: 0,
-		left: 0,
-		behavior: 'smooth'
-	});
 }
 </script>
 

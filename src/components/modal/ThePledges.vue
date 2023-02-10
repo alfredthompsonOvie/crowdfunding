@@ -8,7 +8,7 @@
 				<button
 					type="button"
 					class="btn closeModalBtn"
-					@click.prevent="modalStore.toggleBackProject"
+					@click.prevent="closePledgeModal"
 				>
 					<img
 						src="@/assets/images/icon-close-modal.svg"
@@ -28,6 +28,7 @@
 					:pledge="pledge"
 					:index="i"
 					@toggleForm="toggleForm"
+					:id="singleWord(pledge.title)"
 				/>
 			</div>
 		</div>
@@ -83,7 +84,6 @@ const pledges = ref([
 ]);
 
 const toggleForm = (index) => {
-	console.log(index);
 	pledges.value = pledges.value.map((pledge, i) => {
 		if (i === index) {
 			pledge.open = !pledge.open;
@@ -93,6 +93,17 @@ const toggleForm = (index) => {
 		return pledge;
 	});
 };
+const singleWord = (w) => w.split(' ').join('')
+
+	const closePledgeModal = ()=> {
+		modalStore.toggleBackProject()
+		pledgesStore.resetPledgeId()
+		window.scrollTo({
+      left: 0,
+      top: 0,
+      behavior: 'smooth',
+    });
+}
 </script>
 
 <style lang="scss" scoped>

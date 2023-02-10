@@ -2,6 +2,8 @@
 	<div
 		class="pledge__card"
     :class="{selected: pledge.open, outOfSock: 0 === pledge.pledgeCount}"
+    :id="id"
+    ref="el"
     >
 		<!-- @click.prevent="handleClick" -->
 		<div class="pledge__card--content">
@@ -68,7 +70,8 @@ import { useFundsStore } from "@/stores/funds";
 import { useModalStore } from "@/stores/modal";
 import { usePledgesStore } from "@/stores/pledges"
 
-import { computed, ref } from "vue";
+import { computed, ref, onMounted } from "vue";
+// import { computed, ref } from "vue";
 const fundsStore = useFundsStore();
 const modalStore = useModalStore();
 const pledgesStore =  usePledgesStore();
@@ -81,13 +84,16 @@ const props = defineProps({
   },
   index: {
     type: Number
+  },
+  id: {
+    type: String,
+    required: true
   }
 })
 const emit = defineEmits(['toggleForm'])
 
 const showForm = ref(false)
 const selected = computed(()=>props.pledge.open)
-// const selected = ref(props.pledge.open)
 const pledgeAmount = ref('')
 
 const handleClick = () => {
@@ -100,8 +106,18 @@ const onSubmit = (pledge) => {
   modalStore.toggleBackProject()
   modalStore.toggleFeedback()
   pledgesStore.reducePledgeCount(pledge)
-  window.scrollTo(0,0)
+  window.scrollTo({
+      left: 0,
+      top: 0,
+      behavior: 'smooth',
+    });
 }
+const el = ref(null)
+onMounted(() => {
+  if (props.id === pledgesStore.pledgeId) {
+    el.value.scrollIntoView({behavior: 'smooth', block: 'center'})
+  }
+})
 </script>
 
 <style lang="scss" scoped>

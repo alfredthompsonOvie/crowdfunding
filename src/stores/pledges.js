@@ -5,6 +5,7 @@ export const usePledgesStore = defineStore('pledges', () => {
   const bambooStand = ref(101);
   const blackEditionStand = ref(64);
   const mahoganySpecialEdition = ref(0);
+  const pledgeId = ref(null);
   
   const bambooStandCount = computed(() => bambooStand.value)
   const blackEditionStandCount = computed(() => blackEditionStand.value)
@@ -21,6 +22,12 @@ export const usePledgesStore = defineStore('pledges', () => {
       mahoganySpecialEdition.value -= 1
     }
   }
+  const updatePledgeId = (id) => {
+    pledgeId.value = id
+  }
+  const resetPledgeId = () => {
+    pledgeId.value = null
+  }
 
   return {
     bambooStand,
@@ -29,6 +36,9 @@ export const usePledgesStore = defineStore('pledges', () => {
     bambooStandCount,
     blackEditionStandCount,
     mahoganySpecialEditionCount,
-    reducePledgeCount
+    reducePledgeCount,
+    updatePledgeId,
+    pledgeId,
+    resetPledgeId
   }
 })

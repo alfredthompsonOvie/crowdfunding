@@ -176,9 +176,12 @@
 
 <style>
 .about {
+	grid-column: 2;
+
 	min-height: 100vh;
 	display: flex;
-	align-items: center;
+	text-align: center;
+	/* align-items: center; */
 }
 .about__card {
 	max-width: 400px;

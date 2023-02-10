@@ -8,6 +8,7 @@
 	display: grid;
 	grid-template-columns: 1fr 10fr 1fr;
 	grid-template-rows: 12.5em 7em auto;
+	scroll-behavior: smooth;
 }
 .bg {
 	grid-column: 1/-1;

@@ -1,7 +1,7 @@
 <template>
 	<div
 		class="pledge__card"
-    :class="{selected: pledge.open, outOfSock: 0 === pledge.pledgeRemaining}"
+    :class="{selected: pledge.open, outOfSock: 0 === pledge.pledgeCount}"
     >
 		<!-- @click.prevent="handleClick" -->
 		<div class="pledge__card--content">
@@ -32,7 +32,7 @@
 			</p>
 			<div class="card__footer">
 				<div class="inStock">
-					<span class="figure">{{ pledge.pledgeRemaining }}</span>
+					<span class="figure">{{ pledge.pledgeCount }}</span>
 					<span class="text" v-if="pledge.title !== 'Pledge with no reward'">left</span>
 				</div>
 			</div>
@@ -40,7 +40,7 @@
 		<!-- Selected pledge start -->
 		<form 
     class="pledge__form"
-    @submit.prevent="onSubmit"
+    @submit.prevent="onSubmit(pledge.title)"
     v-if="pledge.open">
 			<p class="text">Enter your pledge</p>
 			<div class="form__group">
@@ -66,11 +66,12 @@
 <script setup>
 import { useFundsStore } from "@/stores/funds";
 import { useModalStore } from "@/stores/modal";
+import { usePledgesStore } from "@/stores/pledges"
 
 import { computed, ref } from "vue";
 const fundsStore = useFundsStore();
 const modalStore = useModalStore();
-
+const pledgesStore =  usePledgesStore();
 
 
 const props = defineProps({
@@ -94,10 +95,12 @@ const handleClick = () => {
   emit('toggleForm', props.index)
 }
 
-const onSubmit = () => {
+const onSubmit = (pledge) => {
   fundsStore.addToFunds(pledgeAmount.value)
   modalStore.toggleBackProject()
   modalStore.toggleFeedback()
+  pledgesStore.reducePledgeCount(pledge)
+  window.scrollTo(0,0)
 }
 </script>
 

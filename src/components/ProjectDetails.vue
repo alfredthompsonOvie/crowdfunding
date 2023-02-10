@@ -19,11 +19,11 @@
 		</p>
 
 		<div class="pledges">
-			<div class="card">
+			<!-- <div class="card">
 				<header class="card__header">
 					<div class="title">
 						<h2 class="subHeading">Bamboo Stand</h2>
-						<h2 class="subHeading subHeading-pledge">Pledge $25 or more</h2>
+						<h2 class="subHeading subHeading--pledge">Pledge $25 or more</h2>
 					</div>
 				</header>
 				<p class="text">
@@ -44,7 +44,7 @@
 				<header class="card__header">
 					<div class="title">
 						<h2 class="subHeading">Black Edition Stand</h2>
-						<h2 class="subHeading subHeading-pledge">Pledge $75 or more</h2>
+						<h2 class="subHeading subHeading--pledge">Pledge $75 or more</h2>
 					</div>
 				</header>
 				<p class="text">
@@ -60,11 +60,11 @@
 				</div>
 			</div>
 
-			<div class="card" data-outOfStock="true">
+			<div class="card">
 				<header class="card__header">
 					<div class="title">
 						<h2 class="subHeading">Mahogany Special Edition</h2>
-						<h2 class="subHeading subHeading-pledge">Pledge $200 or more</h2>
+						<h2 class="subHeading subHeading--pledge">Pledge $200 or more</h2>
 					</div>
 				</header>
 				<p class="text">
@@ -79,32 +79,90 @@
 					</div>
 					<button type="button" class="btn cta" disabled>Out of Stock</button>
 				</div>
-			</div>
+			</div> -->
+
+			<section 
+			class="card" 
+			v-for="pledge in pledges" 
+			:key="pledge.title"
+			>
+				<header class="card__header">
+					<section class="title">
+						<h1 class="subHeading">{{ pledge.title }}</h1>
+						<h2 class="subHeading subHeading--pledge">{{ pledge.pledgeInfo }}</h2>
+					</section>
+				</header>
+				<p class="text">
+					{{ pledge.content }}
+				</p>
+				<div class="card__footer">
+					<div class="inStock">
+						<span class="figure">{{ pledge.pledgeCount }}</span>
+						<span class="text">left</span>
+					</div>
+					<button 
+					type="button"
+					class="btn cta" 
+					:disabled="pledge.pledgeCount === 0"
+					v-if="!pledge.pledgeCount"
+					>Out of Stock
+				</button>
+					<button 
+					type="button"
+					class="btn cta" 
+					:disabled="pledge.pledgeCount === 0"
+					@click.prevent="handleClick"
+					v-else
+					>Select Reward
+				</button>
+				</div>
+			</section>
 		</div>
 	</div>
 </template>
 
 <script setup>
-// import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { usePledgesStore } from "@/stores/pledges"
+import { useModalStore } from "@/stores/modal"
+
+const store = usePledgesStore();
+const modalStore =  useModalStore()
 
 
-// const pledges = ref([
-//   {
-//     title: 'Bamboo Stand Pledge $25 or more',
-//     description: '',
-//     pledgeLeft: 'left'
-//   },
-//   {
-//     title: '',
-//     description: '',
-//     pledgeLeft: 'left'
-//   },
-//   {
-//     title: '',
-//     description: '',
-//     pledgeLeft: 'left'
-//   },
-// ])
+
+const pledges = ref([
+	{
+		title: "Bamboo Stand",
+		pledgeInfo: "Pledge $25 or more",
+		content:
+			"You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.",
+		pledgeCount: computed(()=>store.bambooStand),
+	},
+	{
+		title: "Black Edition Stand",
+		pledgeInfo: "Pledge $75 or more",
+		content:
+			"You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included.",
+			pledgeCount: computed(()=>store.blackEditionStand),
+	},
+	{
+		title: "Mahogany Special Edition",
+		pledgeInfo: "Pledge $200 or more",
+		content:
+			"You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added to our Backer member list. Shipping is included.",
+			pledgeCount: computed(()=>store.mahoganySpecialEdition),
+	},
+]);
+
+const handleClick = () => {
+	modalStore.toggleBackProject()
+	window.scrollTo({
+		top: 0,
+		left: 0,
+		behavior: 'smooth'
+	});
+}
 </script>
 
 <style lang="scss" scoped></style>

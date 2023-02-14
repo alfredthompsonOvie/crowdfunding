@@ -155,9 +155,6 @@
 	position: relative;
 	overflow: hidden;
 	margin-top: 0.4em;
-	@media (min-width: 545px) {
-		margin-top: 1.5em;
-	}
 }
 .progress__bar {
 	position: absolute;
@@ -292,10 +289,10 @@
 .pledge__card.outOfSock:hover .subHeading--title {
 	color: initial;
 }
-.pledge__card--selected{
+.pledge__card--selected {
   border: 2px solid var(--ModerateCyan);
 }
-.pledge__card--content{
+.pledge__card--content {
   padding: 2em 1.5em;
   display: grid;
   grid-template-columns: 30px 10fr 1fr;
@@ -443,13 +440,7 @@ label {
     align-items: center;
   }
 
-  .card__footer{
-    grid-column: 3;
-    grid-row: 1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+
   .pledge__category .text{
     grid-column: 2/-1;
     grid-row: 2/-1;
@@ -458,4 +449,14 @@ label {
 	.pledge__card .card__footer {
 		margin: 0;
 	}
+}
+
+@media (min-width: 668px) {
+	.card__footer{
+    grid-column: 3;
+    grid-row: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }

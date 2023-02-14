@@ -1,5 +1,5 @@
 <template>
-	<div
+	<section
 		class="pledge__card"
     :class="{selected: pledge.open, outOfSock: 0 === pledge.pledgeCount}"
     :id="id"
@@ -20,10 +20,10 @@
 			</div>
 			<header class="card__header card__header--pledge-subHeading">
 				<div class="title">
-					<h2
+					<h1
           class="subHeading subHeading--title"
           @click.prevent="handleClick"
-          >{{ pledge.title }}</h2>
+          >{{ pledge.title }}</h1>
 					<h2 class="subHeading subHeading--pledge">
 						{{ pledge.pledgeInfo }}
 					</h2>
@@ -62,7 +62,7 @@
 			</div>
 		</form>
 		<!-- Selected pledge end -->
-	</div>
+	</section>
 </template>
 
 <script setup>

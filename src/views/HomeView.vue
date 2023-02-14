@@ -1,7 +1,7 @@
 <template>
 	<main class="main">
-		<div class="card__container">
-			<div class="card card--main">
+		<section class="card__container">
+			<section class="card card--main">
 				<img
 					src="@/assets/images/logo-mastercraft.svg"
 					alt="Mastercraft logo"
@@ -11,7 +11,7 @@
 				<p class="text">
 					A beautiful & handcrafted monitor stand to reduce neck and eye strain.
 				</p>
-				<div class="ctaWrapper">
+				<section class="ctaWrapper">
 					<button
 						type="button"
 						class="cta cta--project js-project"
@@ -38,16 +38,14 @@
 						</span>
 						<span class="cta--bookmark--content" :class="{'bookmark--content': bookmark}" v-else> Bookmarked </span>
 					</button>
-				</div>
-			</div>
-			<!-- 2 -->
+				</section>
+			</section>
+
 			<FundsStats />
-			<!-- 3 -->
+
 			<ProjectDetails />
-			<!-- @element="handleScroll" -->
-			<!-- 4 -->
-			<!-- 5 -->
-		</div>
+
+		</section>
 	</main>
 	<ThePledges v-if="modalStore.showBackProject" />
 	<TheFeedback v-if="modalStore.showFeedback" />

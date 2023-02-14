@@ -1,10 +1,10 @@
 <template>
 	<section class="overlay modal">
-		<div class="card support">
+		<section class="card support">
 			<header class="card__header card__header--pledge-heading">
-				<div class="title">
-					<h2 class="subHeading">Back this project</h2>
-				</div>
+				<section class="title">
+					<h1 class="subHeading">Back this project</h1>
+				</section>
 				<button
 					type="button"
 					class="btn closeModalBtn"
@@ -31,7 +31,7 @@
 					:id="singleWord(pledge.title)"
 				/>
 			</div>
-		</div>
+		</section>
 	</section>
 	<section class="overlay--bg"></section>
 </template>

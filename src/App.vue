@@ -2,7 +2,7 @@
   <section class="bg"></section>
   <TheNavigation />
 
-  <router-view></router-view>
+  <router-view />
 </template>
 
 <script setup>

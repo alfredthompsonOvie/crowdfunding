@@ -1,36 +1,34 @@
 <template>
-	<section class="overlay modal">
-		<section class="card support">
-			<header class="card__header card__header--pledge-heading">
-				<section class="title">
-					<h1 class="subHeading">Back this project</h1>
-				</section>
-				<button
-					type="button"
-					class="btn closeModalBtn"
-					@click.prevent="closePledgeModal"
-				>
-					<img
-						src="@/assets/images/icon-close-modal.svg"
-						alt="close the modal"
-					/>
-				</button>
-			</header>
-			<p class="text">
-				Want to support us in bringing Mastercraft Bamboo Monitor Riser out in
-				the world?
-			</p>
-
-			<div class="pledge__category">
-				<PledgeCard
-					v-for="(pledge, i) in pledges"
-					:key="pledge.title"
-					:pledge="pledge"
-					:index="i"
-					@toggleForm="toggleForm"
-					:id="singleWord(pledge.title)"
+	<section class="card modal--support">
+		<header class="card__header card__header--pledge-heading">
+			<section class="title">
+				<h1 class="subHeading">Back this project</h1>
+			</section>
+			<button
+				type="button"
+				class="btn"
+				@click.prevent="closePledgeModal"
+			>
+				<img
+					src="@/assets/images/icon-close-modal.svg"
+					alt="close the modal"
 				/>
-			</div>
+			</button>
+		</header>
+		<p class="text">
+			Want to support us in bringing Mastercraft Bamboo Monitor Riser out in
+			the world?
+		</p>
+
+		<section class="pledge__category">
+			<PledgeCard
+				v-for="(pledge, i) in pledges"
+				:key="pledge.title"
+				:pledge="pledge"
+				:index="i"
+				@toggleForm="toggleForm"
+				:id="singleWord(pledge.title)"
+			/>
 		</section>
 	</section>
 	<section class="overlay--bg" @click.prevent="closePledgeModal"></section>
@@ -118,16 +116,13 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 input[type="checkbox"] {
-	/* background-color: initial; */
 	cursor: pointer;
 	appearance: initial;
-	/* box-sizing: border-box; */
 	margin: 3px 3px 3px 4px;
 	padding: initial;
 	width: 1.2em;
 	height: 1.2em;
 	border: 1px solid var(--DarkCyan);
-
 	border-radius: 50%;
 }
 input[type="checkbox"]:checked {

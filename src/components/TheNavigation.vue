@@ -6,26 +6,26 @@
 		<section class="hamburger" v-if="isMobile">
 			<button
 				type="button"
-				class="btn openMenu js__openMenu"
+				class="btn"
 				v-if="!menu"
 				@click.prevent="menu = !menu"
 			>
-				<img src="@/assets/images/icon-hamburger.svg" alt="open menu button" />
+				<img src="@/assets/images/icon-hamburger.svg" alt="open menu" />
 			</button>
 			<button
 				type="button"
-				class="btn closeMenu js__closeMenu"
+				class="btn"
 				@click.prevent="menu = !menu"
 				v-else
 			>
 				<img
 					src="@/assets/images/icon-close-menu.svg"
-					alt="close nav menu icon"
+					alt="close nav menu"
 				/>
 			</button>
 		</section>
 		<section class="overlay" v-if="menu">
-			<ul class="nav__list--mobile" v-if="menu">
+			<ul class="nav__list--mobile">
 				<li class="nav__item">
 					<router-link :to="{ name: 'about' }" class="nav__link"
 						>About</router-link
@@ -60,7 +60,6 @@
 				>
 			</li>
 		</ul>
-		<ul></ul>
 	</nav>
 </template>
 
@@ -93,9 +92,9 @@ const checkScreen = () => {
 	grid-row: 1;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	padding: 1em 0;
 	height: 5em;
-	justify-content: space-between;
 }
 .branding {
 	position: relative;
@@ -106,7 +105,6 @@ const checkScreen = () => {
 	position: relative;
 	z-index: 10;
 }
-// overlay @z-indez: 4 modal@8
 .overlay {
 	position: fixed;
 	top: 0;

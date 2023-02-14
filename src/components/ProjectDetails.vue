@@ -92,14 +92,6 @@ const pledges = ref([
 ]);
 
 const handleClick = (anchor) => {
-	// pledges.value = pledges.value.map((pledge) => {
-	// 	if (pledge.title === anchor) {
-	// 		pledge.open = !pledge.open;
-	// 	} else {
-	// 		pledge.open = false;
-	// 	}
-	// 	return pledge;
-	// });
 	anchor = anchor.split(' ').join('')
 	store.updatePledgeId(anchor);
 	modalStore.toggleBackProject()

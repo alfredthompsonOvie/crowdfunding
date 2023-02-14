@@ -28,7 +28,7 @@
 						<span class="cta--bookmark--img">
 							<img
 								src="@/assets/images/icon-bookmark.svg"
-								alt="bookmark"
+								alt="save to bookmark"
 								class="bookmark__img"
 								:class="{ 'bookmark--img': bookmark }"
 							/>
@@ -65,11 +65,6 @@ const bookmark = ref(false);
 const handleClick = () => {
 	bookmark.value = !bookmark.value;
 };
-// const element = ref(null);
-// const handleScroll = (el) => {
-// 	element.value = el
-// 	// console.log("el", el.getBoundingClient());
-// }
 </script>
 
 <style lang="scss" scoped>
@@ -82,12 +77,7 @@ const handleClick = () => {
 	font-weight: var(--fw-bold);
 	font-size: 0.9rem;
 	transition: all 0.3s linear;
-	// @media(min-width: 500px){
-	//   background-color: var(--DarkGray-opacity);
-	//   padding-right: 1.5em;
-	// }
 	@media (min-width: 545px) {
-		// background-color: var(--DarkGray-opacity);
 		background-color: var(--DarkGray-opac);
 		padding-right: 1.5em;
 	}
@@ -105,7 +95,6 @@ const handleClick = () => {
 .cta--Bookmark:hover {
 	opacity: 0.8;
 }
-// active state of .cta--bookmark-active
 .bookmark--content {
 	opacity: 0.8;
 	color: var(--DarkCyan);

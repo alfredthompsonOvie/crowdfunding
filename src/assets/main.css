@@ -4,7 +4,6 @@
 	max-width: 90em;
 	width: 100%;
 	margin: 0 auto;
-
 	display: grid;
 	grid-template-columns: 1fr 10fr 1fr;
 	grid-template-rows: 12.5em 7em auto;
@@ -22,9 +21,7 @@
 .main {
 	grid-column: 2;
 	grid-row: 1/-1;
-	/* padding-top: 10em; */
 	margin-top: 10em;
-	/* background-color: #fff; */
 	padding-bottom: 5em;
 }
 .card__container {
@@ -36,10 +33,7 @@
 	background-color: #fff;
 	border-radius: 8px;
 	padding: 2em 1.5em;
-
 	text-align: center;
-
-	/* // max-width: 580px; */
 	max-width: 650px;
 	margin-inline: auto;
 	box-shadow: 0px 0px 5px var(--DarkGray-opacity);
@@ -78,7 +72,6 @@
 .ctaWrapper {
 	display: flex;
 	justify-content: space-between;
-	/* // align-items: center; */
 	gap: 1em;
 }
 .cta {
@@ -93,31 +86,6 @@
 .cta:hover {
 	background-color: var(--DarkCyan);
 }
-
-/* 
-
-.hero {
-  grid-column: 1/-1;
-  grid-row: 1/3;
-  display: grid;
-  grid-template-columns: 1fr 10fr 1fr;
-
-  @media(min-width: 545px){
-  }
-}
-
-*/
-
-/* media queries */
-/* @media (min-width: 34.0625em) {
-  #app {
-    grid-template-rows: 18.5em 5em auto;
-	}
-  .bg {
-    background-image: url(@/assets/images/image-hero-desktop.jpg);
-  }
-} */
-
 .funds__item {
 	padding-bottom: 1em;
 	position: relative;
@@ -159,7 +127,6 @@
 .progress__bar {
 	position: absolute;
 	left: 0;
-	/* width: 80%; */
 	height: 100%;
 	background-color: var(--ModerateCyan);
 	border-radius: 10px;
@@ -228,22 +195,8 @@
 	z-index: 90;
 }
 
-/* .modal {
-	position: absolute;
-	top: 0em;
-	left: 0;
-	right: 0;
-	padding: 5em 0; 
-	display: grid;
-	grid-template-columns: 1fr 10fr 1fr;
-	align-items: center;
-	justify-content: center;
-	z-index: 99;
-} */
-
 .modal--success{
   max-width: 400px;
-  /* width: 100%; */
 	margin-inline: auto;
 	position: absolute;
 	top: 40%;
@@ -254,18 +207,14 @@
 .modal--success img ~ * {
   margin-top: 1.3em;
 }
-.support {
-	grid-column: 2;
-  text-align: left;
-  z-index: 6;
-	position: absolute;
-	top: 8em;
-	left: 50%;
-	transform: translateX(-50%);
-	z-index: 99;
+.modal--support {
 	max-width: 600px;
-	width: 100%;
-
+	text-align: left;
+	position: absolute; 
+	top: 8em;
+	left: 1em;
+	right: 1em;
+	z-index: 99;
 }
 .pledge__category .card:nth-child(1) {
   margin-top: 1.5em;
@@ -305,9 +254,6 @@
   grid-column: 1;
   grid-row: 1;
 }
-/* // .selected__pledge{
-//   margin: 0;
-// } */
 .card__header--pledge-subHeading{
   grid-column: 2;
   grid-row: 1;
@@ -319,7 +265,7 @@
 .pledge__category .title {
   justify-content: flex-start;
 }
-.support .title {
+.modal--support .title {
   width: 100%;
 }
 .pledge__category .text{
@@ -337,9 +283,6 @@
   padding: 2em 1.5em;
   text-align: center;
 }
-.js-pledge__form{
-  /* display: none; */
-}
 .form__group {
   display: flex;
   justify-content: center;
@@ -348,13 +291,10 @@
   position: relative;
 }
 .form__control {
-  /* // background-color: var(--ModerateCyan); */
   padding: 1em 1.5em 1em 2.5em;
-  /* // color: #fff; */
   font-weight: var(--fw-bold);
   font-size: .9rem;
   border-radius: 50px;
-  /* // transition: all .3s linear; */
   border: 1px solid var(--DarkGray-opacity);
   width: 6.4em;
 }
@@ -378,7 +318,7 @@ label {
   color: var(--DarkGray-opacity);
 }
 
-@media (min-width: 545px) {
+@media (min-width: 34.0625em) {
 	.funds__list {
 		display: flex;
 		text-align: left;
@@ -419,17 +359,11 @@ label {
 	.inStock {
 		margin: 0;
 	}
-  /* ! there's another .card__footer below */
-  /* ! there's another .card__footer below */
-  /* ! there's another .card__footer below */
 	.card__footer {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
     margin-top: 1em;
-		/* position: absolute;
-		top: 1.5em;
-		right: 2em; */
 	}
 
   .form__group {
@@ -445,7 +379,7 @@ label {
 	}
 }
 
-@media (min-width: 668px) {
+@media (min-width: 41.75em) {
 	.pledge__category .text{
     grid-column: 2/-1;
     grid-row: 2/-1;

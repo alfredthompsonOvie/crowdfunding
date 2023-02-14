@@ -73,21 +73,21 @@ const pledges = ref([
 		pledgeInfo: "Pledge $25 or more",
 		content:
 			"You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.",
-		pledgeCount: computed(()=>store.bambooStand),
+		pledgeCount: computed(() => store.bambooStand),
 	},
 	{
 		title: "Black Edition Stand",
 		pledgeInfo: "Pledge $75 or more",
 		content:
 			"You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included.",
-			pledgeCount: computed(()=>store.blackEditionStand),
+		pledgeCount: computed(() => store.blackEditionStand),
 	},
 	{
 		title: "Mahogany Special Edition",
 		pledgeInfo: "Pledge $200 or more",
 		content:
 			"You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added to our Backer member list. Shipping is included.",
-			pledgeCount: computed(()=>store.mahoganySpecialEdition),
+		pledgeCount: computed(() => store.mahoganySpecialEdition),
 	},
 ]);
 

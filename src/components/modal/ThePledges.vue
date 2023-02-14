@@ -33,13 +33,13 @@
 			</div>
 		</section>
 	</section>
-	<section class="overlay--bg"></section>
+	<section class="overlay--bg" @click.prevent="closePledgeModal"></section>
 </template>
 
 <script setup>
 import { usePledgesStore } from "@/stores/pledges"
 import { useModalStore } from "@/stores/modal";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import PledgeCard from "./PledgeCard.vue";
 
 const modalStore = useModalStore();
@@ -62,6 +62,7 @@ const pledges = ref([
 		pledgeCount: pledgesStore.bambooStandCount,
 		placeholder: 25,
 		open: false,
+		min: 25,
 	},
 	{
 		title: "Black Edition Stand",
@@ -71,6 +72,7 @@ const pledges = ref([
 		pledgeCount: pledgesStore.blackEditionStandCount,
 		placeholder: 75,
 		open: false,
+		min: 75,
 	},
 	{
 		title: "Mahogany Special Edition",
@@ -80,6 +82,7 @@ const pledges = ref([
 		pledgeCount: pledgesStore.mahoganySpecialEditionCount,
 		placeholder: 200,
 		open: false,
+		min: 200,
 	},
 ]);
 
@@ -104,6 +107,13 @@ const singleWord = (w) => w.split(' ').join('')
       behavior: 'smooth',
     });
 }
+onMounted(() => {
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modalStore.showBackProject) {
+			closePledgeModal();
+  }
+});
+})
 </script>
 
 <style lang="scss" scoped>
